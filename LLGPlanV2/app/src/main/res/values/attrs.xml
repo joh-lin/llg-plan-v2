@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colors -->
+    <attr name="colorBackground" format="color"/>
+    <attr name="colorBackgroundDark" format="color"/>
+    <attr name="colorPlanChange" format="color"/>
+    <attr name="colorPlanCancelled" format="color"/>
+    <attr name="colorPrimary" format="color"/>
+    <attr name="colorOnPrimary" format="color"/>
+    <attr name="colorOnPrimaryDark" format="color"/>
+    <attr name="colorSecondary" format="color"/>
+    <attr name="colorOnSecondary" format="color"/>
+    <attr name="colorHyperlinkText" format="color"/>
+</resources>

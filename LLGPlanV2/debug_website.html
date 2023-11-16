@@ -1,0 +1,1496 @@
+<!-- BEGINN HTML-HEAD --><!doctype html>
+<html lang="de"> 
+ <head> 
+  <meta charset="UTF-8"> 
+  <title>SLP-Termin | Klausur-Orga</title> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <meta name="author" content="SLP-WebTeam: Michael Ziemke (Koeln, Germany)"> 
+  <meta name="editor" content="NotePad++"> 
+  <meta name="keywords" content="Termin Termine Übersicht SelbstLernPortal Kalender"> 
+  <link rel="stylesheet" href="/html/css/navi.css.php" type="text/css"> 
+  <link rel="stylesheet" href="./termin.css.php" type="text/css"> 
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon"> 
+  <link rel="icon" href="favicon.png" type="image/png" sizes="192x192"> <!-- CSS und JS zum JQuery mit DatePicker --> 
+  <script src="../js/jquery.js.php"></script> 
+  <script src="../js/jquery-ui.js.php"></script> 
+  <link rel="stylesheet" href="../js/jquery-ui.css.php"> 
+  <link rel="stylesheet" href="../css/datepicker.css.php"> <!-- weitere JS-Skripte --> 
+  <script src="./termin_classes.js.php"></script> 
+  <script src="./termin_tools.js.php"></script> 
+  <script>
+<!--
+function initData () {
+
+  var kwhelfer = new KwHelfer(
+    '2021/22,33,25,46,5,18,52',
+    '2020/21,33,26,46,5,16,53',
+    '2022/23,33,26,46,5,17,52'
+  );
+//alert('in klausur_initData; typeof(kwhelfer)='+typeof(kwhelfer));
+//  kwhelfer.create (
+//    '2021/22,33,25,46,5,18,52',
+//    '2020/21,33,26,46,5,16,53',
+//    '2022/23,33,26,46,5,17,52'
+//    );
+
+  var sjParm = 1;
+  //var dzr = "";
+  //if (!dzr) dzr = location.search;
+  var dzr = location.search;
+  // keine gültigen (neuen) Parameterwerte nach Quartalswahl? Dann ggf. vorherige holen:
+  if (getParamValue (dzr, 'anzkw') == '' || getParamValue (dzr, 'kw') == '' || getParamValue (dzr, 'endkw') == '')
+    dzr = "";  
+  // auch vorherige fehlen:
+  if (!dzr) dzr = location.search;
+  if (getParamValue (dzr, 'sj') != '')
+    sjParm = parseInt (getParamValue (dzr, 'sj'));
+  kwhelfer.setAltAktNeu (sjParm);
+
+  // Übergabe-Parameter auswerten:
+  // a) kw (Anfangs-Kalenderwoche)
+  //var kwj = get_kwj("");  // LOKALE Funktion (s.u.)
+  var kwj = get_kwj(dzr);
+  var kwA = kwj.split('/');
+  var erstekw = kwA[0];
+  // b) anzkw (Anzahl Kalenderwochen)
+  var anzkw = parseInt(getParamValue (dzr, 'anzkw'));
+
+  if (isNaN(anzkw)) anzkw = 4;
+  var erstermo = kw_montag (parseInt(kwA[0]), parseInt(kwA[1]));
+  // c) endkw (End-Kalenderwoche)
+  var endkwj = getParamValue (dzr, 'endkw');
+  var endkw = endkwj.split('/')[0];
+  if (endkwj=='') {
+    var datum = new Date();
+    datum.setTime (erstermo.getTime() + ((anzkw-1)*7) * (24 * 60 * 60 * 1000));
+    endkw = kalenderwoche (datum.getFullYear(), 1+datum.getMonth(), datum.getDate());
+    endkwj = String(endkw) + '/' + String(datum.getFullYear());
+   }
+
+   //alert('DEBUG: Beginn initData()');
+  // var datum = new Date();
+  // PHP-Serverside-Datum statt (manipulierbares) JS-Client-Datum:
+  var datumS = "7.3.2022 um 22:10 Uhr";
+  // = datum.getDate() + '.' + (1+datum.getMonth()) + '.' + datum.getFullYear()
+  // + ' um ' + datum.getHours() + ':' + datum.getMinutes() + ' Uhr';
+
+  if (!dzr)
+    dzr = location.search;
+
+  qh = getParamValue (dzr, 'qh');
+  qhtext = 'Schuljahr ';
+  plantext = '';
+  if (qh.substr (0,1) == 'q')
+    qhtext = qh.substr (1,1) + '. Quartal ';
+  if (qh.substr (0,1) == 'h')
+    qhtext = qh.substr (1,1) + '. Halbjahr ';
+
+  // sj = termine.sj;  // OBSOLET
+
+  sjParm = getParamValue (dzr, 'sj');
+  switch (sjParm) {
+   case '2':
+    plantext = '; Planung';
+    kwhelfer.setAltAktNeu (2);
+    break;
+   case '0':
+    plantext = '; Rückblick';
+    kwhelfer.setAltAktNeu (0);
+    break;
+   default:
+    sjParm = '1';
+    kwhelfer.setAltAktNeu (1);
+   }
+  sj = kwhelfer.getSj();
+  document.getElementById("titel").innerHTML = "im " + qhtext + sj;
+  kw2 = '(' + String(anzkw) + ' KWs: ' + String(erstekw) + " - " + String(endkw) + plantext + ')';
+  document.getElementById("kw-anzeige").innerHTML = kw2;
+  /* bisherige Anzeige (v2.5): 
+  kw2 = '(KW ' + String(erstekw) + " - " + String(endkw) + plantext + ')';
+  document.getElementById("kw-anzeige").innerHTML = kw2;
+  if (qhtext != '') qhtext += ' / ';
+  document.getElementById("kw-anzeige2").innerHTML
+    = qhtext + String(anzkw) + ' Kalenderwoche(n)';
+  */
+  document.getElementById("druckdatum").innerHTML
+    = ' (gedruckt am ' + datumS + ')';
+  }
+
+  document.onkeyup = enterEventShow;  // Meldung nach Enter-Drücken für Anzeige-Seiten
+
+-->
+</script> 
+ </head> <!-- ENDE HTML-HEAD --> 
+ <body class="klausur" onload="initData();"> 
+  <noscript>
+   JavaScript muss hier aktiviert sein!
+  </noscript> <!-- FORTSETZUNG HTML-BODY --> 
+  <h3> <span class="no-wrap"> Landrat-Lucas-Gymnasium in Leverkusen: </span> <span class="no-wrap"> Klausur-Termine <span id="titel"></span> </span> <span class="no-wrap noprint"> <span id="kw-anzeige"></span> <span id="status"></span> </span> </h3> 
+  <h3 class="noprint mar-tb2"> <input type="button" value="<<<<" title="Vier KWs zurück" onclick="oc_changeweek(-4,document.URL)"> <select name="selQuartal" id="selQuartal" onchange="antw=this.options[selectedIndex].value;ocStartWithAnzEndKw (document.URL, antw)" title="Quartal-Auswahl" size="1"><option value="">Quartal-Wahl</option><option value="*q1">1. Quartal</option><option value="*q2">2. Quartal</option><option value="*q3">3. Quartal</option><option value="*q4">4. Quartal</option><option value="*1">1. Halbjahr</option><option value="*2">2. Halbjahr</option><option value="*">Schuljahr</option><option value="?">weitere</option></select> <input type="button" value=">>>>" title="Vier KWs vor" onclick="oc_changeweek(4,document.URL)"> <span class="no-wrap"> <input class="small-width" type="button" value="Startseite" title="Zurück zur Startseite (z. B. für erneute Anmeldung)" onclick="oc_start()"> <input class="small-width" type="button" value="Übersicht" title="Termin-Übersicht" onclick="oc_liste()"> <input class="small-width" type="button" value="Drucken" title="Hinweise für den Druck der Termin-Tabelle" onclick="oc_druck(&quot;klausur&quot;)"> <input class="small-width" type="button" value="Logout" title="Abmelden vom Termin-Portal" onclick="oc_logout()"> </span> </h3> 
+  <div class="noprint"></div> 
+  <table class="klausur"> 
+   <thead> 
+    <tr class="klausur"> 
+     <th class="klausur klausur-kw" scope="col">Stufe</th> 
+     <th class="klausur klausur-tag" scope="col">Montag</th> 
+     <th class="klausur klausur-tag" scope="col">Dienstag</th> 
+     <th class="klausur klausur-tag" scope="col">Mittwoch</th> 
+     <th class="klausur klausur-tag" scope="col">Donnerstag</th> 
+     <th class="klausur klausur-tag" scope="col">Freitag</th> 
+     <th class="klausur klausur-tag" scope="col">Samstag</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;10
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">7.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-07">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">D/ade E/bfik
+       <hr class="klausur">G5 (1.-2.-(3.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>8.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-08">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">9.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-09">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G6 (3.-4.-(5.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>10.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-10">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G4 (1.-2.)
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">VorAbi L2
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">11.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-11">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G5 (3.-4.)
+       <hr class="klausur">L2 (1.-3.-(4.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>12.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-12">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;11
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">14.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-14">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G6 (3.-4.)
+       <hr class="klausur">G7 (5.-6.-(7.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>15.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-15">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">VorAbi GK
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">16.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-16">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">D/bfg M/adhi E/c
+       <hr class="klausur">G8 (3.-4.-(5.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>17.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-17">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">E/ade
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">18.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-18">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G1 (3.-4.-(5.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>19.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-19">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;12
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>21.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-21">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">D/ij M/c
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>22.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-22">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G3 (1.-2.)
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>23.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-23">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">M/befk
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">24.3.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-24">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G4 (1.-2.-(3.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>25.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-25">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G8 (1.-2.)
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>26.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-26">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;13
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>28.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-28">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>29.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-29">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>30.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-30">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>31.3.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-03-31">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>1.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-01">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">Noteneintragung
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>2.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-02">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;14
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>4.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-04">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>5.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-05">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">Noteneintrag 17U
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>6.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-06">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>7.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-07">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>8.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-08">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>9.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-09">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;15
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>11.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-11">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>12.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-12">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>13.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-13">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>14.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-14">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>15.4.&nbsp;Karfreitag
+      </div>
+      <div class="klausur" id="d_2022-04-15">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>16.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-16">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;16
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>18.4.&nbsp;Ostermontag
+      </div>
+      <div class="klausur" id="d_2022-04-18">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>19.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-19">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>20.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-20">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>21.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-21">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>22.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-22">
+       <hr class="klausur">Osterferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>23.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-23">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;17
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>25.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-25">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>26.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-26">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">Noteneintrag 14U
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>27.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-27">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>28.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-28">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>29.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-29">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>30.4.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-04-30">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;18
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>2.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-02">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">3.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-03">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G9 (1.-2.-(3.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>4.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-04">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G2 (5.-6.)
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>5.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-05">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G4 (1.-2.)
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">6.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-06">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G3 (5.-6.-(7.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>7.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-07">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;19
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">9.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-09">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G6 (3.-4.)
+       <hr class="klausur">L2 (1.-3.-(4.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>10.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-10">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">11.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-11">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G2 (1.-2.-(3))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>12.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-12">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">13.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-13">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G5 (1.-2.)
+       <hr class="klausur">L1 (1.-3.-(4.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>14.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-14">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;20
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 07.03.2022">16.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-16">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">E/abcdefghijk
+       <hr class="klausur">G5 (1.-2.-(3.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>17.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-17">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 07.03.2022">18.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-18">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G6 (3.-4.-(5.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">19.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-19">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G3 (3.-4.)
+       <hr class="klausur">G7 (3.-4.-(5.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>20.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-20">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">Abi 4
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>21.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-21">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;21
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>23.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-23">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">Abi 4
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">24.5.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-24">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">D_ZK
+       <hr class="klausur">G1 (3.-4.-(5.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>25.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-25">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>26.5.&nbsp;Chr. Himmelf.
+      </div>
+      <div class="klausur" id="d_2022-05-26">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>27.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-27">
+       <hr class="klausur">Bewegl. Ferientag
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>28.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-28">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;22
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>30.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-30">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>31.5.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-05-31">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">M_ZK
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">1.6.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-01">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G8 (1.-2.-(3.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b><span style="color:red;" title="aktualisiert am 28.02.2022">2.6.</span>&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-02">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G4 (1.-2.-(3.))
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>3.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-03">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">G8 (1.-2.)
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>4.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-04">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;23
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>6.6.&nbsp;Pfingstmontag
+      </div>
+      <div class="klausur" id="d_2022-06-06">
+       <hr class="klausur">Pfingstferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>7.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-07">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>8.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-08">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>9.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-09">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>10.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-10">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>11.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-11">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;24
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>13.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-13">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">Abi 3 (mündl.)
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>14.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-14">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>15.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-15">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>16.6.&nbsp;Fronleichnam
+      </div>
+      <div class="klausur" id="d_2022-06-16">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>17.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-17">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>18.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-18">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;25
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>20.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-20">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>21.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-21">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>22.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-22">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>23.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-23">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>24.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-24">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>25.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-25">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;26
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>27.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-27">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>28.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-28">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>29.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-29">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>30.6.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-06-30">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>1.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-01">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>2.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-02">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;27
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>4.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-04">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>5.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-05">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>6.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-06">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>7.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-07">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>8.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-08">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>9.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-09">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;28
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>11.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-11">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>12.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-12">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>13.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-13">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>14.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-14">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>15.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-15">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>16.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-16">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr>
+    <tr class="klausur">
+     <th class="klausur klausur-kw">KW&nbsp;29
+      <hr class="klausur">SI
+      <hr class="klausur">EF
+      <hr class="klausur">Q1
+      <hr class="klausur">Q2</th>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>18.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-18">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>19.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-19">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>20.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-20">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>21.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-21">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>22.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-22">
+       <hr class="klausur">Sommerferien
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+     <td class="klausur tac">
+      <div class="tal" style="background-color:#CFCFCF; margin:0em; ">
+       <b>&nbsp;</b>23.7.&nbsp;
+      </div>
+      <div class="klausur" id="d_2022-07-23">
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+       <hr class="klausur">&nbsp;
+      </div></td>
+    </tr> 
+   </tbody> 
+  </table> 
+  <hr class="noprint"> 
+  <table>
+   <tbody>
+    <tr> 
+     <td style="text-align:left;"> <span class="legend">Lizenz bis 01.11.2023: SLP-Termin v4.4.1 <span class="no-wrap">© Aug 2021</span> <span class="no-wrap">SLP-Coding-Team c/o Ziemke</span></span> </td> 
+     <td style="text-align:right;"> <span class="noprint legend"> Diese Seite ist W3-zertifiziert: <a href="https://validator.w3.org/nu/?doc=https://selbstlernportal.de/html/termin/termin_klausur.php" target="W3-Validation" title="W3-Validator starten"> <img style="border:none; width: auto; height: 1.0rem; margin-bottom: -0.4rem; " src="../images/logo_html5.png" alt="Valid HTML 5"> </a> </span> <span class="printonly legend" id="druckdatum"></span> </td> 
+    </tr>
+   </tbody>
+  </table>  
+ </body>
+</html>

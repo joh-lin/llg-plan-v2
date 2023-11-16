@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="StudentEditorPopupAnimation">
+        <item name="android:windowEnterAnimation">@anim/student_editor_popup_show</item>
+        <item name="android:windowExitAnimation">@anim/student_editor_popup_hide</item>
+    </style>
+</resources>

@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="android.widget.FrameLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/cardCornerRadius"
+        app:cardBackgroundColor="?attr/colorPrimary">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/week_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:textSize="@dimen/textSize"
+                android:textColor="?attr/colorOnPrimary"
+                android:text=""/>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/week_text_view"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent">
+
+                <!-- Table itself -->
+                <TableLayout
+                    android:id="@+id/table_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <TableRow> <!-- Headline -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="MO" />
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="DI" />
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="MI" />
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="DO" />
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="FR" />
+                    </TableRow>
+                    <TableRow> <!-- Row 1 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="1"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 2 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="2"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 3 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="3"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 4 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="4"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 5 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="5"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 6 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="6"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 7 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="7"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 8 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="8"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                    <TableRow> <!-- Row 9 -->
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text="9"/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                        <TextView android:textColor="?attr/colorOnPrimary" android:layout_width="@dimen/timetableColumnWidth"
+                            android:textSize="@dimen/textSize" android:layout_height="@dimen/timetableRowHeight"
+                            android:gravity="center" android:text=""/>
+                    </TableRow>
+                </TableLayout>
+
+                <!-- horizontal lines -->
+                <LinearLayout
+                    android:layout_width="@dimen/timetableWidth"
+                    android:layout_height="@dimen/timetableHeight"
+                    android:orientation="vertical"
+                    android:layout_centerInParent="true"
+                    android:paddingTop="@dimen/timetableRowHeight">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/seperatorLineWidth"
+                            android:background="@drawable/gradient_line_horizontal"/>
+                    </FrameLayout>
+                </LinearLayout>
+
+                <!-- vertical lines -->
+                <LinearLayout
+                    android:layout_width="@dimen/timetableWidth"
+                    android:layout_height="@dimen/timetableHeight"
+                    android:orientation="horizontal"
+                    android:layout_centerInParent="true"
+                    android:paddingLeft="@dimen/timetableColumnWidth">
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="@dimen/seperatorLineWidth"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_line_vertical"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="@dimen/seperatorLineWidth"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_line_vertical"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="@dimen/seperatorLineWidth"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_line_vertical"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="@dimen/seperatorLineWidth"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_line_vertical"/>
+                    </FrameLayout>
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+                        <View
+                            android:layout_width="@dimen/seperatorLineWidth"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_line_vertical"/>
+                    </FrameLayout>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</merge>

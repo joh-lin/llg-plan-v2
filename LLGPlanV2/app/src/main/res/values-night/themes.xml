@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.LLGPlanV2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Custom App Colors -->
+        <item name="colorBackground">#FF262530</item>
+        <item name="colorBackgroundDark">#1B1924</item>
+        <item name="colorPlanChange">#FFE25F00</item>
+        <item name="colorPlanCancelled">#FFCD3B3B</item>
+        <item name="colorPrimary">#FF31303B</item>
+        <item name="colorOnPrimary">#FFFFFFFF</item>
+        <item name="colorOnPrimaryDark">#FF999999</item>
+        <item name="colorSecondary">#FFAAAAAA</item>
+        <item name="colorOnSecondary">#FF222222</item>
+        <item name="colorHyperlinkText">#267DFF</item>
+
+        <!-- Custom Attributes -->
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
+        <item name="fontFamily">@font/questrial_regular</item>
+
+        <!-- Status Bar Color -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorBackground</item>
+    </style>
+
+    <style name="Theme.StartingSplashScreen" parent="Theme.SplashScreen">
+        // Set the splash screen background, animated icon, and animation duration.
+        <item name="windowSplashScreenBackground">#262530</item>
+
+        // Use windowSplashScreenAnimatedIcon to add either a drawable or an
+        // animated drawable. One of these is required.
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_splash_screen</item>
+
+        // Set the theme of the Activity that directly follows your splash screen.
+        <item name="postSplashScreenTheme">@style/Theme.LLGPlanV2</item>  # Required.
+    </style>
+
+    <style name="SettingsTheme" parent="Theme.LLGPlanV2">
+        <item name="android:background">?attr/colorBackground</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColorSecondary">?attr/colorOnPrimary</item>
+    </style>
+
+</resources>

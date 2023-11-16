@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="event_list_max_item_amount">10</integer>
+</resources>

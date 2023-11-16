@@ -1,0 +1,36 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- Text -->
+    <dimen name="textSizeTitleBig">64sp</dimen>
+    <dimen name="textSizeTitle">32sp</dimen>
+    <dimen name="textSize">18sp</dimen>
+    <dimen name="textSizeSmall">14sp</dimen>
+    <dimen name="textSizeSnackbar">6sp</dimen>
+
+    <!-- Other -->
+    <dimen name="cardCornerRadius">15dp</dimen>
+    <dimen name="scrollViewFadingEdgeLength">30dp</dimen>
+
+    <!-- Quick Plan -->
+    <dimen name="quickPlanColumn0">15dp</dimen>
+    <dimen name="quickPlanColumn1">30dp</dimen>
+    <dimen name="quickPlanColumn1PaddingLeft">5dp</dimen>
+    <dimen name="quickPlanColumn2">60dp</dimen>
+    <dimen name="quickPlanColumn2PaddingLeft">5dp</dimen>
+    <dimen name="quickPlanColumn2MarginLeft">5dp</dimen>
+    <dimen name="quickPlanColumn3">66dp</dimen>
+    <dimen name="quickPlanColumn3PaddingLeft">5dp</dimen>
+    <dimen name="quickPlanColumn3MarginLeft">5dp</dimen>
+    <dimen name="quickPlanColumn4">66dp</dimen>
+    <dimen name="quickPlanRowMargin">0dp</dimen>
+
+    <!-- Timetable -->
+    <dimen name="timetableColumnWidth">48dp</dimen>
+    <dimen name="timetableRowHeight">30dp</dimen>
+    <dimen name="seperatorLineWidth">2dp</dimen>
+    <dimen name="timetableWidth">288dp</dimen> // column width * 6
+    <dimen name="timetableHeight">300dp</dimen> // row height * 10
+</resources>

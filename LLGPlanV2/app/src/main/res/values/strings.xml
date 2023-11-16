@@ -1,0 +1,70 @@
+<resources>
+    <string name="app_name">LLG Plan</string>
+    <string name="title_home">Home</string>
+    <string name="title_info">Info</string>
+    <string name="empty"></string>
+
+    <!-- Home Fragment -->
+    <string name="select_student">Profil Auswählen</string>
+    <string name="substitution_plan">Vertretungsplan</string>
+    <string name="timetable">Stundenplan</string>
+    <string name="events">Termine</string>
+    <string name="last_updated">Letzte Synchronisierung</string>
+    <string name="week_a">A-Woche</string>
+    <string name="week_b">B-Woche</string>
+
+    <!-- Student Editor Popup -->
+    <string name="lastname">Nachname</string>
+    <string name="check_lastname">Check</string>
+
+    <!-- Quick Plan -->
+    <string name="no_substitution_found">Kein Vertretungsplan gefunden</string>
+    <string name="no_timetable_found">Kein Stundenplan gefunden</string>
+    <string name="no_student_selected">Kein Schüler Profil ausgewählt.</string>
+    <string name="canceled">Entfall</string>
+    <string name="changed">Änderung</string>
+
+    <!-- Teacher List -->
+    <string name="search">Suchen</string>
+    <string name="no_teacher_list_found">Liste der Lehrer nicht gefunden.</string>
+    <string name="email_copied_to_clipboard">Email wurde Kopiert</string>
+
+    <string name="secrets_activated">Secrets Aktiviert</string>
+    <string name="secrets_deactivated">Secrets Deaktiviert</string>
+
+    <!-- Login Page -->
+    <string name="login_title">Anmelden</string>
+    <string name="login_username">Benutzer</string>
+    <string name="login_password">Passwort</string>
+    <string name="login_confirm">Bestätigen</string>
+    <string name="login_wrong_credentials">Benutzer oder Passwort falsch!</string>
+
+    <!-- NETWORK ERRORS -->
+    <string name="network_timeout">Netzwerk Timeout</string>
+    <string name="network_error">Netzwerk Fehler</string>
+    <string name="network_no_connection">Keine Internetverbindung</string>
+    <string name="network_unknown_error">Unbekannter Fehler</string>
+
+    <!-- OUTDATED WARNINGS -->
+    <string name="outdated_substitution">Vertretungsplan nicht aktuell</string>
+    <string name="outdated_timetable">Stundenplan nicht aktuell</string>
+    <string name="outdated_event_list">Termine sind nicht aktuell</string>
+
+    <!-- INPUT ERROR -->
+    <string name="input_to_short">Eingabe ist zu kurz.</string>
+    <string name="input_only_letters_allowed">Die Eingabe darf nur Buchstaben beinhalten.</string>
+
+    <!-- Student Sync Error -->
+    <string name="student_sync_no_results">Keine Ergebnisse</string>
+    <string name="student_sync_too_many_results">Zu viele Ergebnisse (bitte genauer Suchen)</string>
+    <string name="student_sync_failed">Suche Fehlgeschlagen</string>
+
+    <!-- Error Messages -->
+    <string name="app_version_outdated">App Version ist nicht aktuell!\n(Click für Download)</string>
+    <string name="beta_warning">Achtung: Beta Version</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+</resources>

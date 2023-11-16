@@ -1,0 +1,42 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.LLGPlanV2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Custom App Colors -->
+        <item name="colorBackground">#F9F9F9</item>
+        <item name="colorBackgroundDark">#BABABA</item>
+        <item name="colorPlanChange">#FF7E21</item>
+        <item name="colorPlanCancelled">#FF4B4B</item>
+        <item name="colorPrimary">#E7E7E7</item>
+        <item name="colorOnPrimary">#1C1C1C</item>
+        <item name="colorOnPrimaryDark">#8B8B8B</item>
+        <item name="colorSecondary">#A0A0A0</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="colorHyperlinkText">#267DFF</item>
+
+        <!-- Custom Attributes -->
+        <item name="bottomNavigationStyle">@style/Widget.MaterialComponents.BottomNavigationView.Colored</item>
+        <item name="fontFamily">@font/questrial_regular</item>
+
+        <!-- Status Bar Color -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorBackground</item>
+    </style>
+
+    <style name="Theme.StartingSplashScreen" parent="Theme.SplashScreen">
+        // Set the splash screen background, animated icon, and animation duration.
+        <item name="windowSplashScreenBackground">#262530</item>
+
+        // Use windowSplashScreenAnimatedIcon to add either a drawable or an
+        // animated drawable. One of these is required.
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_splash_screen</item>
+
+        // Set the theme of the Activity that directly follows your splash screen.
+        <item name="postSplashScreenTheme">@style/Theme.LLGPlanV2</item>  # Required.
+    </style>
+
+    <style name="SettingsTheme" parent="Theme.LLGPlanV2">
+        <item name="android:background">?attr/colorBackground</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="android:textColorSecondary">?attr/colorOnPrimary</item>
+    </style>
+
+</resources>
